@@ -1,8 +1,8 @@
 const express = require('express');
 const fs = require('fs');
 
-// const app = express();
-// const port = 3000;
+const app = express();
+const port = 3000;
 
 function getRandomLine(filePath){
     // read from the file
@@ -17,6 +17,14 @@ function getRandomLine(filePath){
 }
 
 const filePath = './generated_paragraphs.txt'
-const randomLine = getRandomLine(filePath);
 
-console.log(randomLine);
+app.get('/random',(req,res)=> {
+    res.json({
+        message: 'Generated new Paragraph !!!',
+        paragraph: getRandomLine(filePath)
+    })
+})
+
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`)
+})
