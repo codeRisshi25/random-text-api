@@ -2,7 +2,7 @@ const express = require('express');
 const fs = require('fs');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 function getRandomLine(filePath){
     // read from the file
@@ -26,5 +26,5 @@ app.get('/random',(req,res)=> {
 })
 
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`)
+    console.log(`server is running on http://localhost:${port}`)
 })
